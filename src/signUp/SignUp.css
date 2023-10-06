@@ -1,9 +1,87 @@
+:root{
+    --global-sign-up-font-size: 1.4rem;
+}
 #SignUpParent{
     height: 100vh;
     display: grid;
 }
+#signUpPageContainer{
+    background: rgb(221, 245, 253);
+    display: grid;
+    margin: auto;
+    width: 35rem;
+    height: 30rem;
+    place-content: center;
+    grid-template-rows: 10fr 5rem 5rem 5rem 6fr;
+    border-radius: 0.5rem;
+}
 #signUpPageContainer .signUpText{
-    font-size: 2.4rem;
+    font-size: var(--global-sign-up-font-size);
     font-weight: 500;
     margin: auto auto 1.2rem auto;
+}
+#signUpPageContainer .inputParent{
+    display: grid;
+}
+#signUpPageContainer .inputLabel{
+    font-size: calc(var(--global-sign-up-font-size)-0.2rem);
+}
+#signUpPageContainer .input{
+    font-size: var(--global-sign-up-font-size);
+    padding: 0.3rem 0 0.3rem 0.5rem;
+    width: 25rem;
+    height: fit-content;
+}
+#signUpPageContainer .genderParent{
+    display: grid;
+    grid-template-areas: 
+    "h h"
+    "a b"
+    ;
+    height: fit-content;
+}
+#femaleImg, #maleImg{
+    fill: black;
+    width: 2rem;
+    height: 2rem;
+}
+.femaleImgParent, #maleImgParent{
+    border: 0.1rem black solid;
+    height: 3rem;
+    display: grid;
+    place-content: center;
+}
+.femaleImgParent{
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+#maleImgParent{
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.femaleImgParentOn{
+    border: 0.1rem rgb(146, 0, 146) solid;
+    height: 3rem;
+    display: grid;
+    place-content: center;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+#femaleImgOn{
+    border: 0.1rem rgb(255, 91, 255) solid;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    fill: rgb(255, 91, 255);
+    width: 2rem;
+    height: 2rem;
+}
+.chooseGender{
+    grid-area: h;
+}
+#SignUpParent .genderParent div:hover{
+    cursor: pointer;
+}
+#SignUpParent .genderParent div:active{
+    cursor: default;
 }

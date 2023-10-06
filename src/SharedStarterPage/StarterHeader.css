@@ -16,17 +16,14 @@
     font-size: 1rem;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 0.2rem;
-    border-bottom: 0rem rgb(125, 125, 125) solid;
-    transition: 0.05s;
     min-width: 3rem;
 }
-#starterPageHeading .signupButton:hover{
-    border-bottom: 0.1rem black solid;
-    padding-bottom: 0.2rem;
+#starterPageHeading .signupButton:hover, #starterPageHeading .signupButton:focus{
+    box-shadow: 0 0 1rem 0.05rem;
+    background-color: rgb(238, 238, 238);
     cursor: pointer;
-    transition: 0.15s;
 }
 #starterPageHeading .signupButton:active{
     cursor: default;
+    background-color: rgb(243, 243, 243);
 }

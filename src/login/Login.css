@@ -7,7 +7,7 @@
     background: rgb(221, 245, 253);
     display: grid;
     margin: auto;
-    width: 25rem;
+    width: 24rem;
     height: 20rem;
     place-content: center;
     grid-template-rows: 10fr 3.5rem 3.5rem 3.5rem 6fr;
@@ -16,7 +16,7 @@
 #loginContainer .inputs{
     padding: 0.35rem 0rem 0.35rem 0.35rem;
     border: 0.15rem rgb(119, 119, 119) solid;
-    background: rgb(210, 253, 255);
+    background: rgba(210, 253, 255, 0);
 }
 #loginContainer .inputs:focus{
     border: 0.15rem rgb(59, 59, 59) solid;

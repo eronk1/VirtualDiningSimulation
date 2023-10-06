@@ -5,6 +5,7 @@ body{
 }
 *{
     font-family: HCo Gotham SSm,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    outline: none;
 }
 p{
     padding: 0;

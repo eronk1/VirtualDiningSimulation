@@ -36,9 +36,15 @@
     width: 25rem;
     height: fit-content;
     margin-top: auto;
-    border: 0.2rem gray solid;
-    border-radius: 0.2rem;
+    border: 0.15rem gray solid;
+    border-radius: 0.15rem;
     background: transparent;
+}
+#signUpPageContainer .input:hover{
+    border: 0.15rem rgb(105, 105, 105) solid;
+}
+#signUpPageContainer .input:focus{
+    border: 0.15rem rgb(86, 86, 86) solid;
 }
 #signUpPageContainer .genderParent{
     display: grid;
@@ -54,7 +60,7 @@
     height: 2rem;
 }
 .femaleImgParent, .maleImgParent{
-    border: 0.2rem grey solid;
+    border: 0.15rem grey solid;
     height: 3rem;
     display: grid;
     place-content: center;
@@ -68,7 +74,7 @@
     border-bottom-right-radius: 0.5rem;
 }
 .maleImgParentOn{
-    border: 0.2rem rgb(58, 74, 255) solid;
+    border: 0.15rem rgb(58, 74, 255) solid;
     height: 3rem;
     display: grid;
     place-content: center;
@@ -76,7 +82,7 @@
     border-bottom-right-radius: 0.5rem;
 }
 #maleImgOn{
-    border: 0.2rem rgb(58, 74, 255) solid;
+    border: 0.15rem rgb(58, 74, 255) solid;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
@@ -87,7 +93,7 @@
 }
 
 .femaleImgParentOn{
-    border: 0.2rem rgb(255, 91, 255) solid;
+    border: 0.15rem rgb(255, 91, 255) solid;
     height: 3rem;
     display: grid;
     place-content: center;
@@ -95,7 +101,7 @@
     border-bottom-left-radius: 0.5rem;
 }
 #femaleImgOn{
-    border: 0.2rem rgb(255, 91, 255) solid;
+    border: 0.15rem rgb(255, 91, 255) solid;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;

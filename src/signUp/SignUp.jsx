@@ -5,35 +5,62 @@ import {Link} from 'react-router-dom'
 import StarterHeader from '../SharedStarterPage/StarterHeader'
 
 export default function SignUp() {
+  let storedVal = JSON.parse(localStorage.getItem("storedSign"));
+  const [inputValues, setInputValues] = useState({
+    inputUsername: storedVal.inputUsername,
+    inputPassword: storedVal.inputPassword,
+    inputConfirmPassword: storedVal.inputConfirmPassword,
+    inputGender: storedVal.inputGender
+  });
+  useEffect(()=>{
+    localStorage.setItem("storedSign",JSON.stringify(inputValues))
+  },[inputValues])
+  const [valid,changeValid] = useState(false);
   const [femaleId, setFemaleId] = useState(["femaleImgParent","femaleImg"]);
   const [maleId, setmaleId] = useState(["maleImgParent","maleImg"]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value
+    });
+  };
   function femaleClicked(){
+    let val = 'female';
     if(maleId[0]== "maleImgParentOn"){
       setmaleId(["maleImgParent","maleImg"]);
       setFemaleId(["femaleImgParentOn","femaleImgOn"]);
-      console.log(1)
     }else if(femaleId[0] == "femaleImgParentOn"){
       setFemaleId(["femaleImgParent","femaleImg"]);
-      console.log(2)
+      val = 'none'
     }else{
       setFemaleId(["femaleImgParentOn","femaleImgOn"]);
-      console.log(femaleId[0])
     }
+    setInputValues({
+      ...inputValues,
+      inputGender: val
+    });
   }
   function maleClicked(){
+    let val = 'male'
     if(femaleId[0]== "femaleImgParentOn"){
       setFemaleId(["femaleImgParent","femaleImg"]);
       setmaleId(["maleImgParentOn","maleImgOn"]);
-      console.log(1)
     }else if(maleId[0] == "maleImgParentOn"){
       setmaleId(["maleImgParent","maleImg"]);
-      console.log(2)
+      val = 'none'
     }else{
       setmaleId(["maleImgParentOn","maleImgOn"]);
-      console.log(maleId[0])
     }
+    setInputValues({
+      ...inputValues,
+      inputGender: val
+    });
   }
+  function handleSubmit(e){
 
+  }
   return (
     <div id='SignUpParent'>
       <StarterHeader topRightButtonLink="/Login" topRightButtonValue="Login" />
@@ -41,15 +68,15 @@ export default function SignUp() {
         <p className='signUpText'>SIGN UP AND START DINING</p>
         <div className='inputParent'>
           <p className='inputLabel'>Choose Username</p>
-          <input className='input' type="text" placeholder='VDRS_Pro123' />
+          <input name='inputUsername' value={inputValues.inputUsername} onChange={handleInputChange} className='input' type="text" placeholder='VDRS_Pro123' />
         </div>
         <div className='inputParent'>
           <p className='inputLabel'>Choose Password</p>
-          <input maxLength={48} className='input' type='password' placeholder='At least 8 characters' />
+          <input name='inputPassword' value={inputValues.inputPassword} onChange={handleInputChange} maxLength={48} className='input' type='password' placeholder='At least 8 characters' />
         </div>
         <div className='inputParent'>
           <p className='inputLabel'>Confirm Password</p>
-          <input maxLength={48} className='input' type='password' placeholder='At least 8 characters' />
+          <input name='inputConfirmPassword' value={inputValues.inputConfirmPassword} onChange={handleInputChange} maxLength={48} className='input' type='password' placeholder='At least 8 characters' />
         </div>
         <div className='genderParent'>
           <p className='chooseGender'>Choose Gender (Optional)</p>
@@ -62,7 +89,7 @@ export default function SignUp() {
             </div>
           </div>
         </div>
-        <button className='theSignUpButton'>Sign Up</button>
+        <button onClick={handleSubmit} className='theSignUpButton'>Sign Up</button>
       </div>
     </div>
   )

@@ -1,13 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Login.css'
-
+import StarterHeader from '../SharedStarterPage/StarterHeader.jsx'
 export default function Login() {
   return (
     <div id='loginPageParent'>
-      <header id='loginPageHeading'>
-        <Link id='signupButton' to="/">Sign Up</Link>
-      </header>
+      <StarterHeader topRightButtonLink="/" topRightButtonValue="Sign Up" />
       <div id='loginContainer'>
         <p className='loginText' tabIndex="1">Login to Start</p>
         <input tabIndex="2" className='box inputs' placeholder='Username' type="text" />

@@ -1,33 +1,14 @@
 #loginPageParent{
     height: 100vh;
-}
-#loginPageHeading{
-    height: 5rem;
-    display: flex;
-    flex-direction: row-reverse;
-}
-#signupButton{
-    background-color: white;
-    color: black;
-    margin: auto;
-    margin-right: 2rem;
-    padding: 0.5rem 2rem;
-    font-size: 1.4rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 0.2rem;
-}
-#signupButton:hover{
-    
+    display: grid;
+    place-content: center;
 }
 #loginContainer{
     background: rgb(221, 245, 253);
     display: grid;
     margin: auto;
-    margin-top: auto;
     width: 25rem;
     height: 20rem;
-    margin-top: 15vh;
     place-content: center;
     grid-template-rows: 10fr 3.5rem 3.5rem 3.5rem 6fr;
     border-radius: 0.5rem;
@@ -81,7 +62,7 @@
     margin: auto auto 1.2rem auto;
 }
 #loginContainer .dhaa{
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
     text-align: center;
 }

@@ -1,0 +1,9 @@
+#SignUpParent{
+    height: 100vh;
+    display: grid;
+}
+#signUpPageContainer .signUpText{
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: auto auto 1.2rem auto;
+}

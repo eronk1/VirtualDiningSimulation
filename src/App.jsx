@@ -8,7 +8,13 @@ import Home from './Home/Home'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  
+  const [inputValues, setInputValues] = useState({
+    inputUsername: "",
+    inputPassword: "",
+    inputConfirmPassword: "",
+    inputGender: ""
+  });
   return (
     <Routes>
       <Route path="/" element={<SignUp />} />

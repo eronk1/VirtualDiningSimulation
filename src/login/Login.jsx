@@ -8,8 +8,8 @@ export default function Login() {
       <StarterHeader topRightButtonLink="/" topRightButtonValue="Sign Up" />
       <div id='loginContainer'>
         <p className='loginText' tabIndex="1">Login to Start</p>
-        <input tabIndex="2" className='box inputs' placeholder='Username' type="text" />
-        <input tabIndex="3" className='box inputs' placeholder='Password' type="text" />
+        <input required tabIndex="2" className='box inputs' placeholder='Username' type="text" />
+        <input required tabIndex="3" className='box inputs' placeholder='Password' type="password" />
         <div id='checkRequest'>
           <p className='errorText' >The input was invalid</p>
           <button id='loginButton' tabIndex="4" className='box'>Login</button>

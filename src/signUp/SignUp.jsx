@@ -1,20 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './SignUp.css'
-import {Link} from 'react-router-dom'
 import StarterHeader from '../SharedStarterPage/StarterHeader'
 
 export default function SignUp() {
-  let storedVal = JSON.parse(localStorage.getItem("storedSign"));
-  const [inputValues, setInputValues] = useState({
-    inputUsername: storedVal.inputUsername,
-    inputPassword: storedVal.inputPassword,
-    inputConfirmPassword: storedVal.inputConfirmPassword,
-    inputGender: storedVal.inputGender
-  });
-  useEffect(()=>{
-    localStorage.setItem("storedSign",JSON.stringify(inputValues))
-  },[inputValues])
+  let storedVal = JSON.parse(localStorage.getItem("storedSign")) || {
+    inputUsername: "",
+    inputPassword: "",
+    inputConfirmPassword: "",
+    inputGender: ""
+  };
   const [valid,changeValid] = useState(false);
   const [femaleId, setFemaleId] = useState(["femaleImgParent","femaleImg"]);
   const [maleId, setmaleId] = useState(["maleImgParent","maleImg"]);
@@ -58,8 +53,21 @@ export default function SignUp() {
       inputGender: val
     });
   }
-  function handleSubmit(e){
+  function handleSubmit(e) {
+    
 
+      // Create settings object for fetch request
+      let settings = {
+          method: "POST",
+          body: JSON.stringify(inputValues), // Convert inputValues to JSON string
+          credentials: 'include',
+          headers: {
+              "Content-Type": "application/json" // Specify content type as JSON
+          }
+      };
+      fetch("http://localhost:3000/signUp", settings)
+          .then(response => response.json()) // Parse response as JSON
+          .then(data => console.log(data));
   }
   return (
     <div id='SignUpParent'>
@@ -68,11 +76,11 @@ export default function SignUp() {
         <p className='signUpText'>SIGN UP AND START DINING</p>
         <div className='inputParent'>
           <p className='inputLabel'>Choose Username</p>
-          <input name='inputUsername' value={inputValues.inputUsername} onChange={handleInputChange} className='input' type="text" placeholder='VDRS_Pro123' />
+          <input name='inputUsername' value={inputValues.inputUsername} onChange={handleInputChange} className='input' type="text" placeholder='VDRS_Pro123'/>
         </div>
         <div className='inputParent'>
           <p className='inputLabel'>Choose Password</p>
-          <input name='inputPassword' value={inputValues.inputPassword} onChange={handleInputChange} maxLength={48} className='input' type='password' placeholder='At least 8 characters' />
+          <input name='inputPassword' value={inputValues.inputPassword} onChange={handleInputChange} maxLength={48} className='input' type='password' placeholder='At least 8 characters'/>
         </div>
         <div className='inputParent'>
           <p className='inputLabel'>Confirm Password</p>

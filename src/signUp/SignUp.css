@@ -18,7 +18,7 @@
 #signUpPageContainer .signUpText{
     font-size: var(--global-sign-up-font-size);
     font-weight: 500;
-    margin: auto auto 1.2rem auto;
+    margin: auto auto 1.5rem auto;
     font-weight: 600;
 }
 #signUpPageContainer .inputParent{
@@ -134,4 +134,5 @@
     border-radius: 0.3rem;
     font-size: var(--global-sign-up-font-size);
     margin-bottom: auto;
+    margin-top: 0.4rem;
 }

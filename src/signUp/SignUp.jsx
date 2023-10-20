@@ -5,20 +5,27 @@ import StarterHeader from '../SharedStarterPage/StarterHeader'
 import { useNavigate } from 'react-router-dom';
 
 export default function SignUp(props) {
-  let storedVal = JSON.parse(localStorage.getItem("storedSign")) || {
-    inputUsername: "",
-    inputPassword: "",
-    inputConfirmPassword: "",
-    inputGender: ""
-  };
   const [inputValues, setInputValues] = props.inputSignUp;
   const [valid,changeValid] = useState(false);
   const [femaleId, setFemaleId] = useState(["femaleImgParent","femaleImg"]);
   const [maleId, setmaleId] = useState(["maleImgParent","maleImg"]);
-
   let navigate = useNavigate();
-  const buttonClick = ()=>{
-    navigate('/Login');
+  function handleButtonClick() {
+  
+    let settings = {
+        method: "POST",
+        body: JSON.stringify(inputValues),
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+    fetch("http://localhost:3000/signUp", settings)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          navigate('/home');
+        })
   }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -87,7 +94,7 @@ export default function SignUp(props) {
             </div>
           </div>
         </div>
-        <button onClick={buttonClick} className='theSignUpButton'>Sign Up</button>
+        <button onClick={handleButtonClick} className='theSignUpButton'>Sign Up</button>
       </div>
     </div>
   )

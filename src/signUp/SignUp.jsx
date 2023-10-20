@@ -2,18 +2,24 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import './SignUp.css'
 import StarterHeader from '../SharedStarterPage/StarterHeader'
+import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function SignUp(props) {
   let storedVal = JSON.parse(localStorage.getItem("storedSign")) || {
     inputUsername: "",
     inputPassword: "",
     inputConfirmPassword: "",
     inputGender: ""
   };
+  const [inputValues, setInputValues] = props.inputSignUp;
   const [valid,changeValid] = useState(false);
   const [femaleId, setFemaleId] = useState(["femaleImgParent","femaleImg"]);
   const [maleId, setmaleId] = useState(["maleImgParent","maleImg"]);
 
+  let navigate = useNavigate();
+  const buttonClick = ()=>{
+    navigate('/Login');
+  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInputValues({
@@ -53,22 +59,6 @@ export default function SignUp() {
       inputGender: val
     });
   }
-  function handleSubmit(e) {
-    
-
-      // Create settings object for fetch request
-      let settings = {
-          method: "POST",
-          body: JSON.stringify(inputValues), // Convert inputValues to JSON string
-          credentials: 'include',
-          headers: {
-              "Content-Type": "application/json" // Specify content type as JSON
-          }
-      };
-      fetch("http://localhost:3000/signUp", settings)
-          .then(response => response.json()) // Parse response as JSON
-          .then(data => console.log(data));
-  }
   return (
     <div id='SignUpParent'>
       <StarterHeader topRightButtonLink="/Login" topRightButtonValue="Login" />
@@ -97,7 +87,7 @@ export default function SignUp() {
             </div>
           </div>
         </div>
-        <button onClick={handleSubmit} className='theSignUpButton'>Sign Up</button>
+        <button onClick={buttonClick} className='theSignUpButton'>Sign Up</button>
       </div>
     </div>
   )

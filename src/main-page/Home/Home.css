@@ -1,0 +1,7 @@
+#homeParent{
+    height: 100vh;
+}
+#homeParent .virtualDiningLink{
+    font-size: 2rem;
+    color: rgb(174, 229, 255);
+}

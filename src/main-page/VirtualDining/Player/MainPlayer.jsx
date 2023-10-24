@@ -20,19 +20,15 @@ class MainPlayer extends Component {
 
     if (upPressed){
       this.setState({ up: up - step })
-      this.props.mainPlayer.position.y[1](up)
     };
     if (downPressed){
       this.setState({ up: up + step })
-      this.props.mainPlayer.position.y[1](up)
     };
     if (leftPressed){
       this.setState({ right: right - step })
-      this.props.mainPlayer.position.x[1](right)
     };
     if (rightPressed){
       this.setState({ right: right + step })
-      this.props.mainPlayer.position.x[1](right)
     };
   };
 
@@ -133,7 +129,7 @@ class MainPlayer extends Component {
   render() {
     const { up, right } = this.state;
     const {mcValue} = this.props;
-    this.props.mainPlayer.position.y[1](right)
+    this.props.mainPlayer.position.x[1](right)
     this.props.mainPlayer.position.y[1](up)
     function getImage(gender){
       if(gender === 'male') return '/PlayerPicture/boy.png'

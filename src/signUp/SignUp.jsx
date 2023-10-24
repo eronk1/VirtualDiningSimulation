@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SignUp(props) {
   let navigate = useNavigate();
-  useEffect(() => {
-    if(props.authStatus[0]){
+  useEffect(()=>{
+    if(props.authStatus){
         navigate('/home');
     }
-  },[])
+  })
   const [inputValues, setInputValues] = props.inputSignUp;
   const [valid,changeValid] = useState(false);
   const [femaleId, setFemaleId] = useState(["femaleImgParent","femaleImg"]);
@@ -35,7 +35,7 @@ export default function SignUp(props) {
         .then(data => {
           if(data.valid){
             props.setLoggedValue(data)
-            props.authStatus[1](true);
+            props.setAuthStatus(true);
             navigate('/home')
           };
         })
@@ -79,7 +79,7 @@ export default function SignUp(props) {
       inputGender: val
     });
   }
-  if(!props.authStatus[0]) {
+  if(!props.authStatus) {
     return (
       <div id='SignUpParent'>
         <StarterHeader topRightButtonLink="/Login" topRightButtonValue="Login" />

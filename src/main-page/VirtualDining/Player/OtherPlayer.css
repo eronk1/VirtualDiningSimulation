@@ -1,8 +1,8 @@
-#otherPlayerParent {
+.otherPlayerParent {
     width: 50px;
     height: 50px;
     background-color: rgb(108, 235, 82);
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     transition: transform 0.1s;

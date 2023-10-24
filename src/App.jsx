@@ -15,35 +15,47 @@ function App() {
   const [userY,setY] = useState(0);
   const [players, updatePlayers] = useState([]);
   let mainPlayer = {username:'TheMC',position:{x:[userX, setX],y:[userY, setY]}, gender:'none',message:'Hello pro sir'};
+  
   socket.on('connect', () => {
     console.log('Connected to server');
   });
   socket.on('outsideUserPositionUpdate',(change)=>{
     let player = players.find(player => player.username === change.username);
-    console.log(players)
-    console.log(player)
     if(player){
-      const updatedPlayer = { ...player, position: { x: change.position.x, y: change.position.y } };
+      const updatedPlayer = { ...player, position: { x: change.position[0], y: change.position[1] } };
       const updatedPlayers = players.map(p => (p.username === player.username ? updatedPlayer : p));
       updatePlayers(updatedPlayers);
     };
   })
   socket.on('newUser', (user) => {
     const userExists = players.some((player) => player.username === user.username);
-  
+    let newUser = {...user,message:'', position: {x: user.position[0], y: user.position[1]}}
     if (!userExists) {
-      updatePlayers((oldPlayers) => [...oldPlayers, user]);
+      updatePlayers((oldPlayers) => [...oldPlayers, newUser]);
     }
   });
   socket.on('userDisconnected', id=>{
     players.filter(player => player.id !== id);
   })
 
-  let settings = {
-    method: "GET"
-  };
   const [isAuthenticated, setAuthenticated] = useState(false);
+
   const [loggedValue, setLoggedValue] = useState(null);
+  useEffect(() => {
+    const serverUrl = 'http://localhost:3000/checkAuth'; // Replace with your server's URL and endpoint
+    fetch(serverUrl, { method: 'GET' , credentials: 'include',headers: {'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}})
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok');
+      })
+      .then((data) => {
+        setLoggedValue(data);
+        console.log(data);
+        setAuthenticated(data.valid);
+      })
+  }, 10000);
 
   useEffect(() =>{
     if(isAuthenticated && loggedValue){
@@ -51,9 +63,9 @@ function App() {
     }
   },[isAuthenticated])
   useEffect(()=>{
-    console.log(userX, userY)
     if(loggedValue){
       socket.emit('positionUpdate', {position:[userX, userY], username: loggedValue.username});
+      console.log(userX, userY)
     }
   },[userX,userY])
   
@@ -67,12 +79,21 @@ function App() {
     inputUsername: "",
     inputPassword: ""
   });
+  let [message, changeMessage] = useState('');
+  let handleMessage = (e) =>{
+    socket.emit('sendMessage', [loggedValue.username, message]);
+  }
+  let [recievedMessage, changeRecievedMessage] = useState();
+  socket.on('recieveMessage', message => {
+    console.log(message);
+    changeRecievedMessage(message)
+  });
   return (
     <Routes>
-      <Route path="/" element={<SignUp setLoggedValue={setLoggedValue} authStatus={[isAuthenticated,setAuthenticated]} inputSignUp={signUpInputs} />} />
-      <Route path="/Login" element={<Login setLoggedValue={setLoggedValue} authStatus={[isAuthenticated,setAuthenticated]} inputLogin={loginInputs} />} />
+      <Route path="/" element={<SignUp setLoggedValue={setLoggedValue} setAuthStatus={setAuthenticated} authStatus={isAuthenticated} inputSignUp={signUpInputs} />} />
+      <Route path="/Login" element={<Login setLoggedValue={setLoggedValue} setAuthStatus={setAuthenticated} authStatus={isAuthenticated} inputLogin={loginInputs} />} />
       <Route path="/home" element={<Home authStatus={isAuthenticated} />} />
-      <Route path="/virtualDining" element={<VirtualDining authStatus={isAuthenticated} mainPlayer={mainPlayer} players={players} />} />
+      <Route path="/virtualDining" element={<VirtualDining mcValue={loggedValue} recievedMessage={recievedMessage} message={changeMessage} handleMessage={handleMessage} authStatus={isAuthenticated} mainPlayer={mainPlayer} players={players} />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )

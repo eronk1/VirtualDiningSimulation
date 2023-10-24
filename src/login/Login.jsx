@@ -5,11 +5,11 @@ import StarterHeader from '../SharedStarterPage/StarterHeader.jsx'
 import { useNavigate } from 'react-router-dom';
 export default function Login(props) {
   let navigate = useNavigate();
-  useEffect(() => {
-    if(props.authStatus[0]){
+  useEffect(()=>{
+    if(props.authStatus){
         navigate('/home');
     }
-},[])
+  })
   const [inputValues, setInputValues] = props.inputLogin;
   let handleButtonClick = () => {
     let authVal = {
@@ -29,7 +29,7 @@ export default function Login(props) {
         .then(data => {
           if(data.valid){
             props.setLoggedValue(data)
-            props.authStatus[1](true);
+            props.setAuthStatus(true);
             navigate('/home');
           }
         })
@@ -41,7 +41,7 @@ export default function Login(props) {
       [name]: value
     });
   };
-  if(!props.authStatus[0]) {
+  if(!props.authStatus) {
     return (
       <div id='loginPageParent'>
         <StarterHeader topRightButtonLink="/" topRightButtonValue="Sign Up" />

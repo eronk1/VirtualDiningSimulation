@@ -71,7 +71,7 @@ class MainPlayer extends Component {
     // Check if an interval is already running
     if (!this.state.intervalId) {
       this.setState({
-        intervalId: setInterval(this.updateBlockPosition, 300),
+        intervalId: setInterval(this.updateBlockPosition, 50),
       });
     }
   };
@@ -132,17 +132,27 @@ class MainPlayer extends Component {
 
   render() {
     const { up, right } = this.state;
-
+    const {mcValue} = this.props;
+    this.props.mainPlayer.position.y[1](right)
+    this.props.mainPlayer.position.y[1](up)
+    function getImage(gender){
+      if(gender === 'male') return '/PlayerPicture/boy.png'
+      if(gender === 'female') return '/PlayerPicture/girl.png'
+      if(gender === 'none') return '/PlayerPicture/non.png'
+    }
     return (
       <div
         id="MainPlayerParent"
         style={{
           transform: `translate(${right}px, ${up}px)`,
           width: '50px', // Set your desired width
-          height: '50px', // Set your desired height
-          position: 'relative',
+          height: '50px'
         }}
-      ></div>
+      >
+        <div id={mcValue.username+'OP'}></div>
+        <p>{mcValue.username}</p>
+        <img id='mcImg' src={getImage(mcValue.gender)} alt="failed to load" />
+      </div>
     );
   }
 }

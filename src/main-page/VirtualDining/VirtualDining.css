@@ -1,4 +1,23 @@
 #virtualDiningParent{
     height: 100vh;
     overflow: hidden;
+    background-image: url('backgroundDine.png');
+    background-size: cover
+}
+#virtualDiningParent .inputParent{
+    position: absolute;
+    bottom: 0;
+}
+#virtualDiningParent .mcInput{
+    width: 12rem;
+    height: 3rem;
+}
+#virtualDiningParent .mcButton{
+    bottom: 0;
+    width: 5rem;
+    height: 3rem;
+}
+#mcImg{
+    width: 5rem;
+    height: 10rem;
 }

@@ -16,7 +16,7 @@ class MainPlayer extends Component {
 
   updateBlockPosition = () => {
     const { up, right, upPressed, downPressed, leftPressed, rightPressed } = this.state;
-    const step = 8; // Adjust the step size as needed.
+    const step = 10; 
 
     if (upPressed){
       this.setState({ up: up - step })
@@ -33,6 +33,7 @@ class MainPlayer extends Component {
   };
 
   handleKeyDown = (event) => {
+    if(this.props.focusState) return;
     const { key } = event;
 
     switch (key) {
@@ -64,7 +65,6 @@ class MainPlayer extends Component {
         break;
     }
 
-    // Check if an interval is already running
     if (!this.state.intervalId) {
       this.setState({
         intervalId: setInterval(this.updateBlockPosition, 50),
@@ -73,6 +73,7 @@ class MainPlayer extends Component {
   };
 
   handleKeyUp = (event) => {
+    if(this.props.focusState) return;
     const { key } = event;
 
     switch (key) {
@@ -104,7 +105,6 @@ class MainPlayer extends Component {
         break;
     }
 
-    // If no arrow keys are pressed, stop the interval
     if (
       !this.state.upPressed &&
       !this.state.downPressed &&
@@ -125,7 +125,6 @@ class MainPlayer extends Component {
     document.removeEventListener('keydown', this.handleKeyDown);
     document.removeEventListener('keyup', this.handleKeyUp);
   }
-
   render() {
     const { up, right } = this.state;
     const {mcValue} = this.props;
@@ -140,14 +139,13 @@ class MainPlayer extends Component {
       <div
         id="MainPlayerParent"
         style={{
-          transform: `translate(${right}px, ${up}px)`,
-          width: '50px', // Set your desired width
-          height: '50px'
+          transform: `translate(${right}px, ${up}px)`
         }}
       >
-        <div id={mcValue.username+'OP'}></div>
-        <p>{mcValue.username}</p>
+        <div className='mcMessage' id={mcValue.username+'OP'}></div>
+        <p id='mcUsername' >{mcValue.username}</p>
         <img id='mcImg' src={getImage(mcValue.gender)} alt="failed to load" />
+        <img id={mcValue.username+'OO'} src="" alt="" className='food' />
       </div>
     );
   }

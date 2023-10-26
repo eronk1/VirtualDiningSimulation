@@ -1,10 +1,36 @@
-.otherPlayerParent {
-    width: 50px;
-    height: 50px;
-    background-color: rgb(108, 235, 82);
-    position: absolute;
-    top: 0;
-    left: 0;
+  .otherPlayerParent {
+    width: 200px;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: 20rem;
+    margin-left: 5rem;
     transition: transform 0.1s;
     z-index: 1;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    bottom: 20rem;
+    left: 5rem;
   }
+  .otherPlayerImg{
+    margin: 0 auto;
+  }
+  .otherPlayerUsername{
+    font-size: 1.2rem;
+    background-color: rgb(195, 253, 177);
+    border: 0.2rem solid green;
+    border-radius: 0.1rem;
+    text-align: center;
+    margin: auto;
+    padding: 0.15rem 0.3rem;
+  }
+  .otherPlayerMessage{
+    margin: auto;
+    text-align: center;
+    background-color: rgb(230, 255, 255);
+    font-size: 1.1rem;
+    border: 0.2rem solid black;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.3rem;
+  }
+  

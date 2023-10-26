@@ -14,14 +14,13 @@ export default function OtherPlayer(props) {
     <div
         className="otherPlayerParent"
         style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          width: '50px',
-          height: '50px',
+          transform: `translate(${position.x}px, ${position.y}px)`
         }}
       >
-        <div id={username+'OP'}></div>
-        <p>{username}</p>
-        <img id='mcImg' src={getImage(gender)} alt="failed to load" />
+        <div className='otherPlayerMessage' id={username+'OP'}></div>
+        <p className='otherPlayerUsername'>{username}</p>
+        <img className='otherPlayerImg' id='mcImg' src={getImage(gender)} alt="failed to load" />
+        <img id={username+'OO'} src="" alt="" className='food' />
       </div>
   )
 }

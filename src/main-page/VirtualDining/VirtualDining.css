@@ -2,22 +2,62 @@
     height: 100vh;
     overflow: hidden;
     background-image: url('backgroundDine.png');
-    background-size: cover
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 1fr 5rem;
 }
 #virtualDiningParent .inputParent{
-    position: absolute;
-    bottom: 0;
+    margin: auto;
+    margin-left: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 #virtualDiningParent .mcInput{
     width: 12rem;
-    height: 3rem;
+    padding: 0.8rem 0.7rem;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    border: 0.2rem rgb(79, 0, 99) solid;
 }
 #virtualDiningParent .mcButton{
     bottom: 0;
-    width: 5rem;
-    height: 3rem;
+    width: 6.0rem;
+    height: 100%;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+    border: 0.2rem rgb(0, 99, 33) solid;
+    background-color: rgb(103, 219, 58);
+    font-weight: 600;
+    font-size: 1rem;
+}
+#virtualDiningParent .mcButton:hover{
+    background-color: rgb(80, 223, 61);
+    transition: 0.2s;
+    cursor: pointer;
 }
 #mcImg{
     width: 5rem;
     height: 10rem;
+}
+#virtualDiningParent #playArea{
+    display: grid;
+}
+#virtualDiningBottomNav{
+    height: 5rem;
+    background: rgb(68, 180, 255);
+    display: flex;
+    flex-direction: row;
+}
+#virtualDiningParent .menu{
+    margin: auto;
+    margin-right: 2rem;
+    width: 22rem;
+    display: flex;
+    justify-content: space-between;
+}
+#virtualDiningParent .menu button{
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
 }

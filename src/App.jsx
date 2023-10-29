@@ -135,6 +135,10 @@ function App() {
         let audio = new Audio('/eatingSound/yummy.mp3')
         audio.play();
         document.getElementById(message[0]+"OO").src="/menu/iceCream.png";
+      }else if(message[1]=='applePie'){
+        let audio = new Audio('/eatingSound/nom.mp3')
+        audio.play();
+        document.getElementById(message[0]+"OO").src="/menu/applePie.png";
       }
       setTimeout(function() {
         document.getElementById(message[0] + "OO").src = "";

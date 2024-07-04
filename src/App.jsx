@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     let onConnect = () => {
       count++;
-      console.log('Connected to server'+count);
+      //console.log('Connected to server'+count);
     }
     socket.on('connect', onConnect);
     return () => {
@@ -29,10 +29,10 @@ function App() {
   },[])
   useEffect(() => {
     let onPU = (change)=>{
-      console.log(change.position)
+      //console.log(change.position)
       let player = players.find(player => player.username === change.username);
       if(player){
-        console.log('water')
+        //console.log('water')
         const updatedPlayer = { ...player, position: { x: change.position[0], y: change.position[1] } };
         const updatedPlayers = players.map(p => (p.username === player.username ? updatedPlayer : p));
         updatePlayers(updatedPlayers);
@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     let onUsersUpdated = users => {
       let updatedPlayers = users.filter(user => user.username !== loggedValue.username);
-      console.log(updatedPlayers)
+      //console.log(updatedPlayers)
       updatePlayers(updatedPlayers);
     }
     socket.on('usersUpdated', onUsersUpdated)
@@ -80,7 +80,7 @@ function App() {
       })
       .then((data) => {
         setLoggedValue(data);
-        console.log(data);
+        //console.log(data);
         setAuthenticated(data.valid);
       })
   }, 10000);
@@ -93,8 +93,8 @@ function App() {
   useEffect(()=>{
     if(loggedValue){
       socket.emit('positionUpdate', {position:[userX, userY], username: loggedValue.username});
-      console.log(userX, userY)
-      console.log(count)
+      //console.log(userX, userY)
+      //console.log(count)
     }
   },[userX,userY])
   
@@ -115,16 +115,16 @@ function App() {
   }
   let [recievedMessage, changeRecievedMessage] = useState();
   socket.on('recieveMessage', message => {
-    console.log(message);
+    //console.log(message);
     changeRecievedMessage(message)
   });
   
   useEffect(() => {
     let onEatingFood = message => {
-      console.log(message)
+      //console.log(message)
       if(message[1]=='hamburger'){
         let audio = new Audio('/eatingSound/nom.mp3')
-        console.log('eating');
+        //console.log('eating');
         audio.play();
         document.getElementById(message[0]+"OO").src="/menu/hamburger.png";
       }else if(message[1]=='steak'){

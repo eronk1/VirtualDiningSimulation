@@ -4,7 +4,7 @@ import './OtherPlayer.css'
 export default function OtherPlayer(props) {
   const block = document.getElementById('otherPlayerParent');
   const {username, gender, message, position} = props;
-  console.log(props)
+  //console.log(props)
   function getImage(gender){
     if(gender === 'male') return '/PlayerPicture/boy.png'
     if(gender === 'female') return '/PlayerPicture/girl.png'

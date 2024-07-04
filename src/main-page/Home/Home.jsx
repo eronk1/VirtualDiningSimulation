@@ -11,7 +11,7 @@ export default function Home(props) {
     }
   })
   const handleClick = () => {
-    const serverUrl = 'http://localhost:3000/logout'; // Replace with your server's URL and endpoint
+    const serverUrl = 'https://vdrs-backend.cags2.com/logout'; // Replace with your server's URL and endpoint
 
     fetch(serverUrl, {
       method: 'DELETE',

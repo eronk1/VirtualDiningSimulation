@@ -8,7 +8,7 @@ import Home from './main-page/Home/Home'
 import VirtualDining from './main-page/VirtualDining/VirtualDining'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:3000');
+const socket = io('https://vdrs-backend.cags2.com');
 
 function App() {
   const [userX,setX] = useState(0);
@@ -70,7 +70,7 @@ function App() {
 
   const [isAuthenticated, setAuthenticated] = useState(false);
   useEffect(() => {
-    const serverUrl = 'http://localhost:3000/checkAuth'; // Replace with your server's URL and endpoint
+    const serverUrl = 'https://vdrs-backend.cags2.com/checkAuth'; // Replace with your server's URL and endpoint
     fetch(serverUrl, { method: 'GET' , credentials: 'include',headers: {'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}})
       .then((response) => {
         if (response.ok) {

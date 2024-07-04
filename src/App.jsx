@@ -80,7 +80,7 @@ function App() {
       })
       .then((data) => {
         setLoggedValue(data);
-        //console.log(data);
+        //console.log(data)s;
         setAuthenticated(data.valid);
       })
   }, 10000);

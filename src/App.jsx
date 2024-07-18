@@ -76,11 +76,11 @@ function App() {
         if (response.ok) {
           return response.json();
         }
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok :(');
       })
       .then((data) => {
         setLoggedValue(data);
-        //console.log(data);
+        //console.log(data)s;
         setAuthenticated(data.valid);
       })
   }, 10000);

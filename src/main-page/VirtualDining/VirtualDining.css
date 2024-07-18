@@ -1,7 +1,7 @@
 #virtualDiningParent{
     height: 100vh;
     overflow: hidden;
-    background-image: url('backgroundDine.png');
+    background-image: url('/backgroundDine.png');
     background-size: cover;
     display: grid;
     grid-template-rows: 1fr 5rem;

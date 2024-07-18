@@ -30,7 +30,7 @@ export default function SignUp(props) {
             "Content-Type": "application/json"
         }
     };
-    fetch("http://localhost:3000/signUp", settings)
+    fetch("https://vdrs-backend.cags2.com/signUp", settings)
         .then(response => response.json())
         .then(data => {
           if(data.valid){

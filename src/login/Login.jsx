@@ -24,7 +24,7 @@ export default function Login(props) {
             "Content-Type": "application/json"
         }
     };
-    fetch("http://localhost:3000/login", settings)
+    fetch("https://vdrs-backend.cags2.com/login", settings)
         .then(response => response.json())
         .then(data => {
           if(data.valid){

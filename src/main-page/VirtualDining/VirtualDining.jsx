@@ -78,6 +78,7 @@ export default function Login(props) {
                     <div className='menu'>
                         <button onClick={()=>props.handleEat('hamburger')} >Hamburger</button>
                         <button onClick={()=>props.handleEat('steak')} >Steak</button>
+                        <button className="food" onClick={()=>props.handleEat('applePie')} >Apple Pie</button>
                         <button onClick={()=>props.handleEat('ice cream')} >Ice cream</button>
                     </div>
                 </div>
